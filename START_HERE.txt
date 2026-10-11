@@ -1,0 +1,30 @@
+INSURECHAIN - 30 MINUTE CLOUD DEMO SETUP
+
+IMPORTANT: This is a SHARED DEMO, not a secure production backend. It synchronizes
+one browser-generated state object to Supabase PostgreSQL. All visitors can view
+and change demo data. Role switching is NOT secure authentication. Do not use real
+personal information or claim this is a production-grade backend.
+
+1) Go to https://supabase.com/dashboard and create a project.
+2) SQL Editor > New query > paste supabase_setup.sql > Run.
+3) Project Settings / Connect or API Keys: copy your Project URL and
+   PUBLISHABLE key (or legacy anon key). NEVER use service_role/secret key.
+4) Open index.html in a text editor and replace:
+     PASTE_SUPABASE_PROJECT_URL_HERE
+     PASTE_SUPABASE_PUBLISHABLE_KEY_HERE
+   with your own values. Keep quotation marks.
+5) ZIP only index.html and _headers, and deploy it to a NEW Netlify site first.
+6) Submit a fake test claim, open site in a different browser/device and refresh.
+   If the same claim appears, shared cloud persistence works.
+7) Upload index.html, _headers, supabase_setup.sql, START_HERE.txt to GitHub,
+   but remove your Supabase project URL/key from index.html before sharing if desired.
+   The publishable key is intentionally public; security must come from RLS.
+
+LIMITATIONS:
+- Not a full server-side claim backend; all business rules still run in browser.
+- Public shared database access; NO secure user roles, auth, private records.
+- Simultaneous edits can overwrite one another; single presenter at a time.
+- Large images/data may exceed request/storage limits.
+- Offline/local fallback is browser-only.
+- For real deployment, use Supabase Auth, per-user RLS, secure database functions,
+  normalized tables, and server-side authorization.
